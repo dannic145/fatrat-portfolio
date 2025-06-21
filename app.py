@@ -13,7 +13,6 @@ def serve_static(path):
 def home():
     return render_template('index.html')
 
-# Health check for Railway
 @app.route('/health')
 def health_check():
     return 'OK', 200
