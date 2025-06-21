@@ -3,41 +3,22 @@ import os
 
 app = Flask(__name__)
 
-# Calculate absolute paths
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
-STATIC_DIR = os.path.join(BASE_DIR, 'static')
+# Serve static files
+@app.route('/static/<path:path>')
+def serve_static(path):
+    return send_from_directory('static', path)
 
-app = Flask(__name__, template_folder=TEMPLATE_DIR)
-
+# Main route
 @app.route('/')
 def home():
     return render_template('index.html')
 
-@app.route('/static/<path:filename>')
-def serve_static(filename):
-    return send_from_directory(STATIC_DIR, filename)
+# Health check for Railway
+@app.route('/health')
+def health_check():
+    return 'OK', 200
 
-# Vercel requires a handler named 'app'
-def app_handler(request):
-    with app.test_request_context(path=request['path'], method=request['method']):
-        try:
-            response = app.full_dispatch_request()
-            return {
-                'statusCode': response.status_code,
-                'headers': dict(response.headers),
-                'body': response.data.decode('utf-8')
-            }
-        except Exception as e:
-            return {
-                'statusCode': 500,
-                'body': f'Server error: {str(e)}'
-            }
-
-# This is required for Vercel
-def app(request):
-    return app_handler(request)
-
-# Local development
+# Run the application
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=3000, debug=True)
+    port = int(os.environ.get("PORT", 3000))
+    app.run(host='0.0.0.0', port=port)
