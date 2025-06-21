@@ -1,0 +1,1246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daniel Nicolas | Cyber Security Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #39FF14;
+            --secondary: #0FFBF9;
+            --tertiary: #ff00ff;
+            --background: #0d1117;
+            --terminal-bg: #000;
+            --terminal-border: #39FF14;
+            --text: #f0f0f0;
+            --warning: #FF3131;
+            --matrix: #00ff41;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Share Tech Mono', monospace;
+        }
+
+        body {
+            background-color: var(--background);
+            color: var(--primary);
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(57, 255, 20, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(15, 251, 249, 0.05) 0%, transparent 20%);
+        }
+
+        /* Matrix background effect */
+        #matrix-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.1;
+            pointer-events: none;
+        }
+
+        /* Glitch effects */
+        .glitch {
+            position: relative;
+        }
+
+        .glitch::before,
+        .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .glitch::before {
+            left: 2px;
+            text-shadow: -2px 0 var(--tertiary);
+            clip: rect(44px, 450px, 56px, 0);
+            animation: glitch-anim 5s infinite linear alternate-reverse;
+        }
+
+        .glitch::after {
+            left: -2px;
+            text-shadow: -2px 0 var(--secondary);
+            clip: rect(44px, 450px, 56px, 0);
+            animation: glitch-anim2 5s infinite linear alternate-reverse;
+        }
+
+        @keyframes glitch-anim {
+            0% { clip: rect(33px, 9999px, 16px, 0); }
+            5% { clip: rect(108px, 9999px, 2px, 0); }
+            10% { clip: rect(76px, 9999px, 71px, 0); }
+            15% { clip: rect(75px, 9999px, 99px, 0); }
+            20% { clip: rect(46px, 9999px, 78px, 0); }
+            25% { clip: rect(115px, 9999px, 61px, 0); }
+            30% { clip: rect(10px, 9999px, 105px, 0); }
+            35% { clip: rect(68px, 9999px, 115px, 0); }
+            40% { clip: rect(133px, 9999px, 74px, 0); }
+            45% { clip: rect(79px, 9999px, 106px, 0); }
+            50% { clip: rect(26px, 9999px, 115px, 0); }
+            55% { clip: rect(67px, 9999px, 73px, 0); }
+            60% { clip: rect(106px, 9999px, 115px, 0); }
+            65% { clip: rect(141px, 9999px, 17px, 0); }
+            70% { clip: rect(17px, 9999px, 88px, 0); }
+            75% { clip: rect(133px, 9999px, 55px, 0); }
+            80% { clip: rect(55px, 9999px, 53px, 0); }
+            85% { clip: rect(97px, 9999px, 108px, 0); }
+            90% { clip: rect(58px, 9999px, 44px, 0); }
+            95% { clip: rect(75px, 9999px, 39px, 0); }
+            100% { clip: rect(10px, 9999px, 14px, 0); }
+        }
+
+        @keyframes glitch-anim2 {
+            0% { clip: rect(129px, 9999px, 52px, 0); }
+            5% { clip: rect(119px, 9999px, 107px, 0); }
+            10% { clip: rect(76px, 9999px, 122px, 0); }
+            15% { clip: rect(147px, 9999px, 6px, 0); }
+            20% { clip: rect(115px, 9999px, 56px, 0); }
+            25% { clip: rect(25px, 9999px, 145px, 0); }
+            30% { clip: rect(63px, 9999px, 17px, 0); }
+            35% { clip: rect(138px, 9999px, 102px, 0); }
+            40% { clip: rect(141px, 9999px, 74px, 0); }
+            45% { clip: rect(20px, 9999px, 133px, 0); }
+            50% { clip: rect(143px, 9999px, 145px, 0); }
+            55% { clip: rect(121px, 9999px, 154px, 0); }
+            60% { clip: rect(136px, 9999px, 17px, 0); }
+            65% { clip: rect(17px, 9999px, 79px, 0); }
+            70% { clip: rect(79px, 9999px, 63px, 0); }
+            75% { clip: rect(51px, 9999px, 94px, 0); }
+            80% { clip: rect(145px, 9999px, 15px, 0); }
+            85% { clip: rect(65px, 9999px, 48px, 0); }
+            90% { clip: rect(10px, 9999px, 95px, 0); }
+            95% { clip: rect(129px, 9999px, 152px, 0); }
+            100% { clip: rect(56px, 9999px, 67px, 0); }
+        }
+
+        /* Header and profile section */
+        .header-section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            align-items: center;
+            margin: 30px 0;
+            padding: 20px;
+            border: 1px solid var(--terminal-border);
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            box-shadow: 0 0 20px rgba(57, 255, 20, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-container {
+            position: relative;
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid var(--secondary);
+            box-shadow: 0 0 25px var(--tertiary);
+            animation: pulse 3s infinite;
+        }
+
+        .profile-container::before {
+            content: "";
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary), var(--tertiary), var(--primary));
+            z-index: -1;
+            border-radius: 50%;
+            animation: rotate 3s linear infinite;
+        }
+
+        .profile-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .profile-container:hover img {
+            transform: scale(1.1);
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 15px var(--tertiary); }
+            50% { box-shadow: 0 0 30px var(--secondary); }
+            100% { box-shadow: 0 0 15px var(--tertiary); }
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .header-content {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .terminal-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .typing-container {
+            text-align: center;
+            margin: 20px 0;
+            min-height: 60px;
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .gif-container {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .gif-container img {
+            width: 80%;
+            max-width: 600px;
+            border-radius: 10px;
+            border: 1px solid var(--terminal-border);
+            box-shadow: 0 0 30px rgba(57, 255, 20, 0.5);
+            transition: all 0.5s;
+        }
+
+        .gif-container img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 40px rgba(15, 251, 249, 0.7);
+        }
+
+        /* Terminal styling */
+        .terminal {
+            background-color: var(--terminal-bg);
+            border: 1px solid var(--terminal-border);
+            border-radius: 5px;
+            padding: 20px;
+            margin: 20px 0;
+            overflow-x: auto;
+            position: relative;
+            box-shadow: 0 0 15px rgba(57, 255, 20, 0.3);
+        }
+
+        .terminal::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(57, 255, 20, 0.1) 1px, transparent 1px);
+            background-size: 100% 2px;
+            animation: scanline 6s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes scanline {
+            0% { background-position: 0 0; }
+            100% { background-position: 0 100%; }
+        }
+
+        .terminal pre {
+            margin: 10px 0;
+            font-size: 1.1rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .prompt {
+            color: var(--secondary);
+            font-weight: bold;
+        }
+
+        .interactive-terminal {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(0, 20, 0, 0.5);
+            border: 1px solid var(--secondary);
+        }
+
+        .terminal-input {
+            background: transparent;
+            border: none;
+            color: var(--primary);
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 1rem;
+            width: calc(100% - 120px);
+            outline: none;
+            caret-color: var(--primary);
+        }
+
+        .terminal-input::placeholder {
+            color: rgba(57, 255, 20, 0.5);
+        }
+
+        /* Manifesto section */
+        .manifesto {
+            margin-bottom: 40px;
+            padding: 20px;
+            border: 1px solid var(--tertiary);
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .manifesto::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(transparent 80%, rgba(255, 0, 255, 0.1));
+            pointer-events: none;
+        }
+
+        .manifesto h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 2rem;
+            color: var(--tertiary);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .content {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .manifesto p {
+            margin: 15px 0;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .warning {
+            color: var(--warning);
+            font-weight: bold;
+            margin-top: 25px !important;
+            font-size: 1.3rem;
+            text-transform: uppercase;
+        }
+
+        .signature {
+            font-style: italic;
+            margin-top: 30px !important;
+            color: var(--secondary);
+            font-size: 1.2rem;
+        }
+
+        /* Skills section */
+        .skills-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .column {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .skill-card {
+            background-color: rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--terminal-border);
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 20px;
+            min-height: 250px;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(57, 255, 20, 0.3);
+            border-color: var(--tertiary);
+        }
+
+        .skill-card::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(57, 255, 20, 0.1), transparent);
+            transform: rotate(45deg);
+            transition: all 0.5s;
+            z-index: 1;
+        }
+
+        .skill-card:hover::before {
+            top: -30%;
+            left: -30%;
+        }
+
+        .skill-card h3 {
+            margin-bottom: 15px;
+            color: var(--secondary);
+            position: relative;
+            z-index: 2;
+        }
+
+        .skill-card pre {
+            white-space: pre-wrap;
+            font-size: 1rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Projects Section */
+        .projects-section {
+            margin: 40px 0;
+            padding: 20px;
+            border: 1px solid var(--tertiary);
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .projects-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(transparent 80%, rgba(255, 0, 255, 0.1));
+            pointer-events: none;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.2rem;
+            color: var(--secondary);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+        }
+
+        .projects-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .project-card {
+            background: rgba(10, 15, 20, 0.8);
+            border: 1px solid var(--terminal-border);
+            border-radius: 8px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 255, 0, 0.1);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(57, 255, 20, 0.4);
+            border-color: var(--tertiary);
+        }
+
+        .project-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--primary);
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px dashed var(--secondary);
+        }
+
+        .project-header h3 {
+            color: var(--secondary);
+            font-size: 1.4rem;
+            flex: 1;
+        }
+
+        .project-status {
+            background: rgba(57, 255, 20, 0.2);
+            color: var(--primary);
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 1px solid var(--primary);
+        }
+
+        .project-content p {
+            color: #ccc;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 15px 0;
+        }
+
+        .project-tech span {
+            background: rgba(15, 251, 249, 0.1);
+            color: var(--secondary);
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            border: 1px solid rgba(15, 251, 249, 0.3);
+        }
+
+        .project-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .project-links a {
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .project-links a:hover {
+            color: var(--secondary);
+            text-shadow: 0 0 10px var(--secondary);
+        }
+
+        .project-links a i {
+            font-size: 0.9rem;
+        }
+
+        .project-footer {
+            margin-top: 20px;
+        }
+
+        .scan-progress {
+            width: 100%;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .scan-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 5px;
+            position: relative;
+        }
+
+        .scan-bar::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+            animation: scanning 2s linear infinite;
+        }
+
+        @keyframes scanning {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .scan-label {
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--secondary);
+            margin-top: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Publications Section */
+        .publications-section {
+            margin: 40px 0;
+            padding: 20px;
+            border: 1px solid var(--tertiary);
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .publications-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(transparent 80%, rgba(255, 0, 255, 0.1));
+            pointer-events: none;
+        }
+
+        .publications-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .publication-card {
+            background: rgba(10, 15, 20, 0.8);
+            border: 1px solid var(--terminal-border);
+            border-radius: 8px;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 255, 0, 0.1);
+        }
+
+        .publication-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(57, 255, 20, 0.4);
+            border-color: var(--tertiary);
+        }
+
+        .publication-card h3 {
+            color: var(--secondary);
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            border-bottom: 1px dashed var(--secondary);
+            padding-bottom: 10px;
+        }
+
+        .publication-card p {
+            color: #ccc;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .publication-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .publication-links a {
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .publication-links a:hover {
+            color: var(--secondary);
+            text-shadow: 0 0 10px var(--secondary);
+        }
+
+        .publication-links a i {
+            font-size: 0.9rem;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            border: 1px solid var(--tertiary);
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .contact-section h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--secondary);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .badges {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .badges a {
+            transition: transform 0.3s;
+        }
+
+        .badges a:hover {
+            transform: translateY(-5px) scale(1.1);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 30px 0;
+            border-top: 1px solid var(--terminal-border);
+            margin-top: 40px;
+            position: relative;
+        }
+
+        .footer::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+        }
+
+        .footer p {
+            font-style: italic;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            color: var(--secondary);
+        }
+
+        /* Terminal cursor animation */
+        .typed-cursor {
+            color: var(--primary);
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        /* Hacker scan effect */
+        .scan-effect {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(0deg, rgba(57, 255, 20, 0.1), rgba(57, 255, 20, 0.6), rgba(57, 255, 20, 0.1));
+            box-shadow: 0 0 10px 2px rgba(57, 255, 20, 0.8);
+            z-index: 1000;
+            pointer-events: none;
+            animation: scan 4s linear infinite;
+        }
+
+        @keyframes scan {
+            0% { top: 0; }
+            100% { top: 100%; }
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .header-section {
+                flex-direction: column;
+            }
+            
+            .profile-container {
+                width: 200px;
+                height: 200px;
+            }
+            
+            .typing-container {
+                font-size: 1.8rem;
+            }
+            
+            .gif-container img {
+                width: 95%;
+            }
+            
+            .projects-container,
+            .publications-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Matrix background -->
+    <canvas id="matrix-bg"></canvas>
+    
+    <!-- Hacker scan effect -->
+    <div class="scan-effect"></div>
+    
+    <!-- Header section with profile picture -->
+    <div class="header-section">
+        <div class="profile-container">
+            <img src="{{ url_for('static', filename='images/hacker.png') }}" alt="Daniel Nicolas">
+        </div>
+        
+        <div class="header-content">
+            <!-- Terminal Header with glitch effect -->
+            <div class="terminal-header">
+                <div class="typing-container">
+                    <span id="typed" class="glitch" data-text="CYBER SECURITY PORTFOLIO"></span>
+                </div>
+            </div>
+
+            <!-- Terminal Output -->
+            <div class="terminal">
+                <pre>> echo "Initializing cyber security protocols..."</pre>
+                <pre>> systemctl start redteam.service</pre>
+                <pre>> whoami</pre>
+                <pre class="prompt">daniel_nicolas@cyberops:~$ <span id="whoami"></span></pre>
+                
+                <!-- Interactive terminal -->
+                <div class="interactive-terminal">
+                    <pre>> Type commands: help, about, skills, contact</pre>
+                    <pre class="prompt">guest@system:~$ <input type="text" class="terminal-input" id="terminal-cmd" placeholder="type 'help' for commands"></pre>
+                    <div id="terminal-output"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hacker GIF -->
+    <div class="gif-container">
+        <img src="https://media2.giphy.com/media/YmZOBDYBcmWK4/giphy.gif" alt="Hacker Animation">
+    </div>
+
+    <!-- Hacker Manifesto -->
+    <div class="manifesto">
+        <h2 class="glitch" data-text="7h3 H4CK3R'5 M4N1F3570">7h3 H4CK3R'5 M4N1F3570</h2>
+        <div id="manifesto-typed" class="typing-container"></div>
+        <div class="content">
+            <p><b>I am a digital warrior, forged in curiosity and driven by purpose.</b></p>
+            <p><b>My passion lies in cybersecurity and Red Team operations, where I blend creativity with chaos to expose vulnerabilities and outmaneuver threats.</b></p>
+            <p><b>I've walked the path of vulnerability assessments and penetration testing, and I'm no stranger to SOC analysis or SIEM ecosystems like Cisco, Splunk, and Wazuh.</b></p>
+            <p><b>They're tools in my arsenal not just for defense, but for understanding the battlefield.</b></p>
+            
+            <p class="warning">⚠️ Crazy Things About Me</p>
+            <p>I do not follow the rules. I test them.</p>
+            <p>I do not fear systems. I understand them.</p>
+            <p>I do not settle for what is secure. I ask why it's not broken yet.</p>
+            
+            <p class="signature">🕶️ I am Daniel Nicolas.<br>
+            Red Team Aspirant. Ethical Hacker. Threat Emulator.<br>
+            This is my code. This is my craft. And this is what I live by.</p>
+        </div>
+    </div>
+
+    <!-- Skills Section -->
+    <div class="skills-section">
+        <div class="column">
+            <div class="skill-card">
+                <h3>🧠 4B0U7 M3</h3>
+                <pre>🛡️ Daniel Nicolas Rentapalli
+🎓 B.Tech in CSE – Specialization: Cybersecurity
+🏫 Malla Reddy University
+📜 Certified Ethical Hacker (CEH v13) | Cisco Certified</pre>
+            </div>
+            
+            <div class="skill-card">
+                <h3>🛡️ C0R3 5K1LLZ</h3>
+                <pre>+ [✓] Offensive Security
++ [✓] Penetration Testing
++ [✓] Adversary Emulation
++ [✓] Vulnerability Research
++ [✓] Malware Analysis</pre>
+            </div>
+        </div>
+        
+        <div class="column">
+            <div class="skill-card">
+                <h3>💻 73CH 574CK</h3>
+                <pre># Cyber Tools Arsenal
+cyber_stack = {
+    "OS": ["Kali Linux", "Parrot OS", "BlackArch"],
+    "Languages": ["Python", "C++"],
+    "Databases": ["MongoDB", "MySQL"],
+    "Tools": ["Metasploit", "Burp Suite", "Nmap", "Wireshark", "John the Ripper"],
+    "SIEM": ["Splunk", "Wazuh"]
+}</pre>
+            </div>
+            
+            <div class="skill-card">
+                <h3>🔥 CURR3N7 0P3R4710NZ</h3>
+                <pre>Sharpening my Red Team Arsenal:  
+! [>>] ⚙️ Learning C++  
+! [>>] Mastering BlackArch, Kali Linux, and Parrot OS  
+! [>>] Malware Analysis
+! [>>] Mastering Advanced PenTesting Techniques
+! [>>] Developing Custom Exploit Modules
+! [>>] Studying Threat Intelligence Platforms
+! [>>] Building Red Team Infrastructure</pre>
+            </div>
+        </div>
+    </div>
+    
+<!-- Hacker-2 GIF -->
+    <div class="gif-container">
+        <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExb3l4Y2t5MTd6Z29tc3h0dHRld3E3MDhjcDF2dDJqZzd6N2x2c2tsZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Z6iLzMvdhKdNK/giphy.gif" alt="Hacker2 Animation">
+    </div> 
+
+    <!-- Projects Section -->
+    <div class="projects-section">
+        <h2 class="section-title">>_ PR0J3C75</h2>
+        <div class="projects-container">
+            <!-- Project 1 -->
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>Unified Cyber Threat Detection & Incident Management System</h3>
+                    <div class="project-status">DEPLOYED</div>
+                </div>
+                <div class="project-content">
+                    <p>A next-gen cybersecurity platform for real-time threat detection, automated incident response, and compliance management.</p>
+                    <div class="project-tech">
+                        <span>Wazuh SIEM</span>
+                        <span>VirusTotal API</span>
+                        <span>YARA</span>
+                        <span>Python</span>
+                        <span>Ansible</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/dannic145/Unified-Cyber-Threat-Detection-and-Incident-Management-System.git" target="_blank">
+                            <i class="fab fa-github"></i> Source
+                        </a>
+                        <a href="#" target="_blank">
+                            <i class="fas fa-external-link-alt"></i> Demo
+                        </a>
+                    </div>
+                </div>
+                <div class="project-footer">
+                    <div class="scan-progress">
+                        <div class="scan-bar" style="width: 100%"></div>
+                    </div>
+                    <div class="scan-label">SYSTEM STATUS: OPERATIONAL</div>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>Mental Health Support Web Application</h3>
+                    <div class="project-status">ACTIVE</div>
+                </div>
+                <div class="project-content">
+                    <p>A compassionate digital sanctuary offering tools for emotional well-being and personal growth.</p>
+                    <div class="project-tech">
+                        <span>Python</span>
+                        <span>Flask</span>
+                        <span>Groq API</span>
+                        <span>LLama3-70B</span>
+                        <span>SQLAlchemy</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/dannic145/Mental-Health-Support-Web-Application.git" target="_blank">
+                            <i class="fab fa-github"></i> Source
+                        </a>
+                        <a href="#" target="_blank">
+                            <i class="fas fa-external-link-alt"></i> Demo
+                        </a>
+                    </div>
+                </div>
+                <div class="project-footer">
+                    <div class="scan-progress">
+                        <div class="scan-bar" style="width: 95%"></div>
+                    </div>
+                    <div class="scan-label">USER ENGAGEMENT: 95%</div>
+                </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>Primal Fit: AI-Powered Holistic Fitness Platform</h3>
+                    <div class="project-status">IN DEVELOPMENT</div>
+                </div>
+                <div class="project-content">
+                    <p>Transform your fitness journey with adaptive AI coaching and personalized nutrition support.</p>
+                    <div class="project-tech">
+                        <span>Python</span>
+                        <span>Flask</span>
+                        <span>Groq API</span>
+                        <span>OpenAI</span>
+                        <span>Stability AI</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/dannic145/Primal-Fit-.git" target="_blank">
+                            <i class="fab fa-github"></i> Source
+                        </a>
+                        <a href="#" target="_blank">
+                            <i class="fas fa-external-link-alt"></i> Demo
+                        </a>
+                    </div>
+                </div>
+                <div class="project-footer">
+                    <div class="scan-progress">
+                        <div class="scan-bar" style="width: 85%"></div>
+                    </div>
+                    <div class="scan-label">DEVELOPMENT: 85% COMPLETE</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Publications Section -->
+    <div class="publications-section">
+        <h2 class="section-title">>_ PUBL1C4710N5</h2>
+        <div class="publications-container">
+            <!-- Publication 1 -->
+            <div class="publication-card">
+                <h3>Unified Cyber Threat Detection and Incident Management System</h3>
+                <p>A comprehensive cybersecurity solution designed to enhance an organization's security posture using Wazuh. It collects and analyzes log and event data from various sources to detect and stop attacks before they cause harm.</p>
+                <div class="publication-links">
+                    <a href="https://www.ijaresm.com/unified-cyber-threat-detection-and-incident-management-system" target="_blank">
+                        <i class="fas fa-external-link-alt"></i> Read Publication
+                    </a>
+                </div>
+            </div>
+
+            <!-- Publication 2 -->
+            <div class="publication-card">
+                <h3>Mental Health Support Web Application</h3>
+                <p>An innovative platform providing scalable, anonymous, and accessible mental health support. Uses intelligent chatbot technology powered by machine learning and NLP to detect emotional states and offer personalized coping mechanisms.</p>
+                <div class="publication-links">
+                    <a href="https://www.ijaresm.com/mental-health-support-web-application" target="_blank">
+                        <i class="fas fa-external-link-alt"></i> Read Publication
+                    </a>
+                </div>
+            </div>
+
+            <!-- Publication 3 -->
+            <div class="publication-card">
+                <h3>FNW - Fitness, Nutrition & Workout Application</h3>
+                <p>Revolutionizes health management by utilizing AI-driven insights and personalized care. Offers daily health analysis, customized food and exercise plans based on users' medical history and BMI, and detailed weekly performance reports.</p>
+                <div class="publication-links">
+                    <a href="https://www.ijprems.com/paperdetail.php?paperId=30adb8f57e82e31a1addcdece7870ecb&title=FNW-Fitness+Nutrition+%26amp%3B+Workout+application&authpr=R.+Daniel+Nicolas" target="_blank">
+                        <i class="fas fa-external-link-alt"></i> Read Publication
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <div class="contact-section">
+        <h2>📡 C0NN3C7 W17H M3</h2>
+        <div class="badges">
+            <a href="mailto:dannic1405@gmail.com">
+                <img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Gmail">
+            </a>
+            <a href="https://www.linkedin.com/in/dannic145/">
+                <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn">
+            </a>
+            <a href="https://tryhackme.com/p/fatrat145">
+                <img src="https://img.shields.io/badge/TryHackMe-212C42?style=for-the-badge&logo=tryhackme&logoColor=white" alt="TryHackMe">
+            </a>
+            <a href="https://app.hackthebox.com/profile/2428312">
+                <img src="https://img.shields.io/badge/Hack_The_Box-9FEF00?style=for-the-badge&logo=Hack%20The%20Box&logoColor=black" alt="HackTheBox">
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>"In the shadows of the network, I sharpen my blades - one exploit at a time."</p>
+        <div class="terminal">
+            <pre>> shutdown -h now</pre>
+            <pre>[  OK  ] Stopped Red Team Operations</pre>
+            <pre>[  OK  ] Closed all security vulnerabilities</pre>
+            <pre>[  OK  ] Logged out all sessions</pre>
+            <pre>[  OK  ] System halted</pre>
+        </div>
+        <div id="goodbye-typed"></div>
+    </div>
+
+    <script>
+        // Matrix background effect
+        const canvas = document.getElementById('matrix-bg');
+        const ctx = canvas.getContext('2d');
+        
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        
+        const matrix = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789$#@%&*()_+-=[]{}|;:,.<>?/";
+        const fontSize = 14;
+        const columns = canvas.width / fontSize;
+        
+        const drops = [];
+        for (let i = 0; i < columns; i++) {
+            drops[i] = Math.floor(Math.random() * canvas.height / fontSize);
+        }
+        
+        function drawMatrix() {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.04)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            ctx.fillStyle = '#0F0';
+            ctx.font = `${fontSize}px monospace`;
+            
+            for (let i = 0; i < drops.length; i++) {
+                const text = matrix.charAt(Math.floor(Math.random() * matrix.length));
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                
+                drops[i]++;
+            }
+        }
+        
+        setInterval(drawMatrix, 35);
+        
+        // Initialize Typed.js
+        document.addEventListener('DOMContentLoaded', function() {
+            // Header typing effect
+            new Typed('#typed', {
+                strings: [
+                    'ACCESSING MAINFRAME...',
+                    'INITIATING CYBER PROTOCOLS...',
+                    'WELCOME TO MY DIGITAL DOMAIN!',
+                    'IN PROGRESS... 💻'
+                ],
+                typeSpeed: 50,
+                backSpeed: 30,
+                loop: true,
+                showCursor: true,
+                cursorChar: '█'
+            });
+            
+            // Whoami typing effect
+            new Typed('#whoami', {
+                strings: ['daniel_nicolas'],
+                typeSpeed: 100,
+                showCursor: false
+            });
+
+            // Manifesto typing effect
+            new Typed('#manifesto-typed', {
+                strings: [
+                    '$ sudo rm -rf *',
+                    '$ hydra -l admin -P rockyou.txt ssh://192.168.1.1',
+                    '$ nmap -sV -O -p- TARGET_IP',
+                    '$ msfconsole -q -x "use exploit/multi/handler; set PAYLOAD..."',
+                    'WELCOME TO MY CYBER REALM',
+                    'DANIEL NICOLAS RENTAPALLI',
+                    'RED TEAM OPERATOR | THREAT EMULATION SPECIALIST',
+                    'ADVERSARY SIMULATION IN PROGRESS... 💻'
+                ],
+                typeSpeed: 40,
+                backSpeed: 25,
+                loop: true,
+                showCursor: true,
+                cursorChar: '█'
+            });
+
+            // Goodbye typing effect
+            new Typed('#goodbye-typed', {
+                strings: [
+                    'SESSION TERMINATED... GOODBYE! 😎',
+                    'SYSTEM HALTED ✖️'
+                ],
+                typeSpeed: 50,
+                backSpeed: 30,
+                loop: true,
+                showCursor: true,
+                cursorChar: '█'
+            });
+            
+            // Interactive terminal commands
+            const terminalInput = document.getElementById('terminal-cmd');
+            const terminalOutput = document.getElementById('terminal-output');
+            
+            terminalInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    const command = terminalInput.value.trim().toLowerCase();
+                    terminalInput.value = '';
+                    
+                    let output = '';
+                    
+                    switch(command) {
+                        case 'help':
+                            output = '> Available commands:\n> about - Learn about me\n> skills - View my skills\n> contact - How to reach me\n> clear - Clear terminal';
+                            break;
+                        case 'about':
+                            output = '> Daniel Nicolas Rentapalli\n> Red Team Operator | Threat Emulation Specialist\n> Cybersecurity enthusiast with a passion for ethical hacking\n> Currently sharpening my skills in adversary simulation';
+                            break;
+                        case 'skills':
+                            output = '> Core Skills:\n> - Offensive Security\n> - Penetration Testing\n> - Adversary Emulation\n> - Vulnerability Research\n> - Malware Analysis\n> \n> Tech Stack:\n> - Kali Linux, Parrot OS\n> - Python, C++\n> - Metasploit, Burp Suite, Nmap';
+                            break;
+                        case 'contact':
+                            output = '> Contact Methods:\n> Email: dannic1405@gmail.com\n> LinkedIn: linkedin.com/in/dannic145\n> TryHackMe: tryhackme.com/p/fatrat145\n> HackTheBox: app.hackthebox.com/profile/2428312';
+                            break;
+                        case 'clear':
+                            terminalOutput.innerHTML = '';
+                            return;
+                        case '':
+                            return;
+                        default:
+                            output = `> Command not found: ${command}\n> Type 'help' for available commands`;
+                    }
+                    
+                    const pre = document.createElement('pre');
+                    pre.textContent = output;
+                    terminalOutput.appendChild(pre);
+                    terminalOutput.scrollTop = terminalOutput.scrollHeight;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
