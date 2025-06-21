@@ -1,5 +1,2 @@
-from app import vercel_handler
+from app import app
 
-# Vercel requires a handler named "app"
-def app(request):
-    return vercel_handler(request)
